@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ollie Ellis — engineering projects</title>
+<meta name="description" content="Mechanical and aerospace engineering projects, test hardware and things built by Ollie Ellis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#E7E9EA;
+  --panel:#F5F6F6;
+  --ink:#14243A;
+  --ink-soft:#5C6875;
+  --line:#C6CBCF;
+  --accent:#0F5FD6;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Archivo',system-ui,-apple-system,Segoe UI,sans-serif;
+  font-size:17px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(15,95,214,.35)}
+a:hover{border-bottom-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+/* ---------- header ---------- */
+header{padding:76px 0 0}
+.name{
+  font-size:clamp(2.6rem,7vw,5.1rem);
+  font-weight:700;
+  letter-spacing:-.035em;
+  line-height:.98;
+  margin:0;
+}
+.tagline{
+  max-width:48ch;
+  margin:22px 0 0;
+  font-size:clamp(1.05rem,2vw,1.28rem);
+  color:var(--ink-soft);
+}
+.contact{
+  display:flex;flex-wrap:wrap;gap:8px 26px;
+  margin:30px 0 0;padding:0;list-style:none;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.84rem;
+}
+.rule{height:1px;background:var(--line);margin:56px 0 0}
+
+/* ---------- hero image ---------- */
+.hero{
+  margin:0;
+  aspect-ratio:21/8;
+  background:var(--panel);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero figcaption{
+  max-width:var(--max);margin:0 auto;padding:10px 28px 0;
+  font-size:.82rem;color:var(--ink-soft);
+}
+
+/* ---------- layout ---------- */
+.cols{display:grid;grid-template-columns:200px 1fr;gap:56px;padding:64px 0 0}
+nav.index{position:sticky;top:40px;align-self:start}
+nav.index h2{
+  font-size:.82rem;font-weight:600;color:var(--ink-soft);
+  margin:0 0 14px;letter-spacing:.02em;
+}
+nav.index ol{list-style:none;margin:0;padding:0}
+nav.index ol + h2{margin-top:24px}
+nav.index li{margin:0 0 9px}
+nav.index a{
+  color:var(--ink);border:0;font-size:.95rem;
+  display:block;padding-left:12px;border-left:2px solid var(--line);
+}
+nav.index a:hover,nav.index a.on{border-left-color:var(--accent);color:var(--accent)}
+
+/* ---------- projects ---------- */
+article.project{padding:0 0 76px;scroll-margin-top:30px}
+article.project + article.project{border-top:1px solid var(--line);padding-top:52px}
+.cathead{font-size:clamp(1.15rem,2.2vw,1.4rem);letter-spacing:-.015em;margin:0 0 30px;padding-bottom:10px;border-bottom:2px solid var(--ink);font-weight:600}
+section.cat + section.cat{padding-top:48px}
+.ptitle{font-size:clamp(1.5rem,3vw,2.05rem);letter-spacing:-.02em;line-height:1.1;margin:0}
+.pmeta{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.8rem;color:var(--ink-soft);margin:9px 0 0;
+}
+.psummary{max-width:66ch;margin:20px 0 0}
+.psummary p{margin:0 0 13px}
+
+.shots{display:grid;gap:10px;margin:26px 0 0}
+.shot{background:var(--panel);border:1px solid var(--line);overflow:hidden;position:relative}
+.shot.lead{aspect-ratio:3/2}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.thumbs .shot{aspect-ratio:1/1}
+button.shot{padding:0;cursor:zoom-in;display:block;width:100%;font:inherit;color:inherit}
+.ph{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:14px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.74rem;color:var(--ink-soft);
+  background:repeating-linear-gradient(45deg,transparent 0 9px,rgba(20,36,58,.045) 9px 18px);
+}
+
+.specs{margin:26px 0 0;max-width:430px;border-top:1px solid var(--line)}
+.specs div{display:flex;justify-content:space-between;gap:20px;padding:7px 0;border-bottom:1px solid var(--line)}
+.specs dt{font-size:.88rem;color:var(--ink-soft);margin:0}
+.specs dd{margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.85rem;text-align:right}
+
+/* ---------- toolbox + footer ---------- */
+section.tools{border-top:1px solid var(--line);padding:52px 0 0}
+section.tools h2,footer h2{font-size:1.3rem;letter-spacing:-.015em;margin:0 0 18px}
+.toolgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.toolgrid h3{font-size:.85rem;color:var(--ink-soft);font-weight:600;margin:0 0 6px}
+.toolgrid p{margin:0;font-size:.95rem}
+footer{padding:62px 0 80px;margin-top:56px;border-top:1px solid var(--line)}
+footer p{max-width:52ch;color:var(--ink-soft)}
+
+/* ---------- lightbox ---------- */
+#box{
+  position:fixed;inset:0;z-index:50;display:none;
+  background:rgba(20,36,58,.94);padding:4vh 4vw;cursor:zoom-out;
+}
+#box.open{display:flex;align-items:center;justify-content:center}
+#box img{width:auto;height:auto;max-width:100%;max-height:92vh;object-fit:contain}
+
+@media(max-width:820px){
+  body{font-size:16px}
+  .cols{grid-template-columns:1fr;gap:0;padding-top:40px}
+  nav.index{display:none}
+  .hero{aspect-ratio:4/3}
+  header{padding-top:48px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ==================================================================
+     EDIT EVERYTHING FROM HERE
+     ==================================================================
+     1. ME  — your name, one-line description, contact links.
+     2. CATEGORIES — the groups, in the order they appear on the page.
+          Delete any you don't use; empty groups are skipped automatically.
+     3. PROJECTS — one { } block per project. Copy a block to add more.
+          category: must match a key in CATEGORIES ("engineering", "carpentry"...).
+          Anything with no category, or an unknown one, lands under "other".
+          images: file names inside the images/ folder.
+                  First image is the big one, next three become thumbnails.
+                  Leave an empty list [] and a placeholder box shows instead.
+     4. TOOLS — the skills panel near the bottom.
+     Nothing below the "STOP EDITING" line needs touching.
+================================================================== -->
+
+<script>
+const ME = {
+  name: "Ollie Ellis",
+  tagline: "Mechanical engineering student at Dartmouth, heading into aerospace. I design, machine, weld and test hardware — mostly things that have to survive being shaken, loaded or launched.",
+  links: [
+    ["email", "mailto:you@example.com"],
+    ["LinkedIn", "https://linkedin.com/in/yourhandle"],
+    ["CV (PDF)", "cv.pdf"]
+  ],
+  heroImage: "",                       // e.g. "hero.jpg" — a wide shot of your best build
+  heroCaption: "Vibration test setup, RAL Space."
+};
+
+const CATEGORIES = [
+  ["engineering", "Engineering"],
+  ["carpentry",   "Carpentry and building"],
+  ["jewellery",   "Jewellery and metalwork"],
+  ["other",       "Other"]
+];
+
+const PROJECTS = [
+  {
+    category: "engineering",
+    name: "Spacecraft vibration & shock qualification",
+    meta: "RAL Space · test intern · 2025",
+    images: [],
+    summary: [
+      "Owned full qualification test cycles on spacecraft hardware, from fixture check to signed-off report, working in a cleanroom environment.",
+      "Rebuilt the accelerometer calibration tracker in Excel/VBA, which surfaced an error in supplier-provided calibration data that had gone unnoticed."
+    ],
+    specs: [
+      ["Test types", "sine, random, shock"],
+      ["Deliverable", "qualification reports"],
+      ["Tools", "Excel/VBA, cleanroom protocol"]
+    ]
+  },
+  {
+    category: "engineering",
+    name: "Crane bot gripper module",
+    meta: "ENGS076 Machine Engineering · mechanical design lead · 2026",
+    images: [],
+    summary: [
+      "Led the mechanical design of the gripper on a competition crane robot. A parallelogram linkage kept the jaw faces parallel through the full travel, so grip force stayed even regardless of object size.",
+      "Gears were 3D printed and cut down to the minimum viable tooth count and web thickness to keep mass off the end of the boom.",
+      "Won \"most effective gripper\" in the class competition."
+    ],
+    specs: [
+      ["Mechanism", "parallelogram linkage"],
+      ["Gears", "3D printed, weight-optimised"],
+      ["Result", "most effective gripper"]
+    ]
+  },
+  {
+    category: "engineering",
+    name: "Truss bridge — FEA vs. reality",
+    meta: "ENGS033 · structural design & test · 2025",
+    images: [],
+    summary: [
+      "Designed and modelled a truss bridge in SolidWorks and SAP2000, then loaded the physical build to failure on an Instron.",
+      "The bridge failed through a mode the FEA hadn't captured, which turned into the more useful half of the project: reconciling where the model's assumptions broke down against what the test actually did."
+    ],
+    specs: [
+      ["Modelling", "SolidWorks, SAP2000"],
+      ["Test", "Instron to failure"],
+      ["Finding", "unmodelled failure mode"]
+    ]
+  },
+  {
+    category: "engineering",
+    name: "Modular aerial vehicle",
+    meta: "ENGS89/90 capstone · CAD & sponsor liaison · 2026",
+    images: [],
+    summary: [
+      "CAD work on a modular aerial vehicle, and sole point of contact with EOS GmbH as project sponsor — scoping requirements, managing the technical back-and-forth and keeping the team's design decisions aligned with what the sponsor needed."
+    ],
+    specs: [
+      ["CAD", "SolidWorks"],
+      ["Sponsor", "EOS GmbH"]
+    ]
+  },
+  {
+    category: "engineering",
+    name: "High altitude balloon payload",
+    meta: "personal / team project",
+    images: [],
+    summary: [
+      "Designed a payload in Fusion360 to profile atmospheric NO₂ up to roughly 30 km, covering the enclosure, instrument mounting and thermal survival of the flight."
+    ],
+    specs: [
+      ["Altitude", "~30 km"],
+      ["Measurement", "NO₂ concentration profile"],
+      ["CAD", "Fusion360"]
+    ]
+  },
+  {
+    category: "engineering",
+    name: "Coring bit fabrication",
+    meta: "Planetary Ice Research Lab · fabrication",
+    images: [],
+    summary: [
+      "Fabricated coring bits for ice drilling research: lathe work, TIG welding, brazing and plasma cutting, iterating on bit geometry between test runs."
+    ],
+    specs: [
+      ["Processes", "lathe, TIG, brazing, plasma"],
+      ["Application", "ice core drilling"]
+    ]
+  },
+  {
+    category: "carpentry",
+    name: "Garden log cabin",
+    meta: "personal build · 2026",
+    images: [],
+    summary: [
+      "A 3.9 × 3.0 m log cabin build, modified from the supplied design to reverse the pent roof so it drains away from the door side — which meant reworking the wall course heights and the roof bearing.",
+      "Carpentry, groundwork and sequencing the whole thing solo."
+    ],
+    specs: [
+      ["Footprint", "3.9 × 3.0 m"],
+      ["Wall", "44 mm log"],
+      ["Modification", "reversed pent roof"]
+    ]
+  },
+  {
+    category: "jewellery",
+    name: "Silver ring — lost wax cast",
+    meta: "personal · 2026",
+    images: [],
+    summary: [
+      "Replace this with a real jewellery piece. Worth saying what the process was (carving, casting, fabrication), what the material was, and anything that went wrong and got fixed on the second attempt."
+    ],
+    specs: [
+      ["Material", "sterling silver"],
+      ["Process", "lost wax casting"]
+    ]
+  }
+];
+
+const TOOLS = [
+  ["CAD & analysis", "SolidWorks (CSWA certified, CSWP in progress), Fusion360, SAP2000"],
+  ["Fabrication", "Manual lathe, TIG welding, brazing, plasma and laser cutting, 3D printing, carpentry"],
+  ["Computation", "MATLAB, C, Excel/VBA"],
+  ["Test", "Vibration and shock qualification, Instron, cleanroom practice"]
+];
+
+const CLOSING = "Currently finishing a BE in Mechanical Engineering at Dartmouth and looking for work in launch and spacecraft hardware. Happy to talk through any of the above in more detail.";
+</script>
+
+<!-- ============================ STOP EDITING ============================ -->
+
+<header>
+  <div class="wrap">
+    <h1 class="name" id="me-name"></h1>
+    <p class="tagline" id="me-tagline"></p>
+    <ul class="contact" id="me-links"></ul>
+  </div>
+  <div class="rule"></div>
+</header>
+
+<figure class="hero" id="hero"></figure>
+<p class="wrap" id="hero-cap" style="font-size:.82rem;color:var(--ink-soft);margin:10px auto 0"></p>
+
+<div class="wrap cols">
+  <nav class="index" aria-label="Projects">
+    <h2>Projects</h2>
+    <ol id="nav-list"></ol>
+  </nav>
+
+  <main id="main"></main>
+</div>
+
+<div class="wrap">
+  <section class="tools">
+    <h2>Tools and processes</h2>
+    <div class="toolgrid" id="toolgrid"></div>
+  </section>
+
+  <footer>
+    <h2>Get in touch</h2>
+    <p id="closing"></p>
+    <ul class="contact" id="me-links-2"></ul>
+  </footer>
+</div>
+
+<div id="box" role="dialog" aria-modal="true" aria-label="Enlarged photo"><img alt=""></div>
+
+<script>
+const el = (t,c) => { const n=document.createElement(t); if(c) n.className=c; return n; };
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const linkList = node => ME.links.forEach(([label,href]) => {
+  const li = el("li"), a = el("a");
+  a.textContent = label; a.href = href;
+  if(/^https?:/.test(href)){ a.target="_blank"; a.rel="noopener"; }
+  li.appendChild(a); node.appendChild(li);
+});
+
+document.title = ME.name + " — engineering projects";
+document.getElementById("me-name").textContent = ME.name;
+document.getElementById("me-tagline").textContent = ME.tagline;
+linkList(document.getElementById("me-links"));
+linkList(document.getElementById("me-links-2"));
+document.getElementById("closing").textContent = CLOSING;
+
+// hero
+const hero = document.getElementById("hero");
+if(ME.heroImage){
+  hero.appendChild(makeImg(ME.heroImage, ME.name + " — hero image"));
+  document.getElementById("hero-cap").textContent = ME.heroCaption || "";
+}else{
+  hero.appendChild(placeholder("images/hero.jpg — wide shot, ~2000px across"));
+}
+
+function makeImg(file, alt){
+  const img = el("img");
+  img.src = "images/" + file;
+  img.alt = alt || "";
+  img.loading = "lazy";
+  img.onerror = () => { const p = img.parentElement; img.remove(); p.appendChild(placeholder("images/" + file + " not found")); };
+  return img;
+}
+function placeholder(text){
+  const d = el("div","ph"); d.textContent = text; return d;
+}
+
+// projects
+const main = document.getElementById("main");
+const navWrap = document.getElementById("nav-list").parentElement;
+document.getElementById("nav-list").remove();
+document.querySelector("nav.index h2").remove();
+
+CATEGORIES.forEach(([key,label]) => {
+  const group = PROJECTS.filter(p => (p.category || "other") === key);
+  if(!group.length) return;
+
+  const navHead = el("h2"); navHead.textContent = label; navWrap.appendChild(navHead);
+  const navOl = el("ol"); navWrap.appendChild(navOl);
+
+  const sec = el("section","cat");
+  const ch = el("h2","cathead"); ch.textContent = label; sec.appendChild(ch);
+  main.appendChild(sec);
+
+  group.forEach(p => renderProject(p, sec, navOl));
+});
+
+function renderProject(p, sec, navOl){
+  const id = slug(p.name);
+
+  const navLi = el("li"), navA = el("a");
+  navA.href = "#" + id; navA.textContent = p.name; navA.dataset.for = id;
+  navLi.appendChild(navA); navOl.appendChild(navLi);
+
+  const art = el("article","project"); art.id = id;
+  const h = el("h3","ptitle"); h.textContent = p.name; art.appendChild(h);
+  if(p.meta){ const m = el("p","pmeta"); m.textContent = p.meta; art.appendChild(m); }
+
+  const sum = el("div","psummary");
+  (p.summary||[]).forEach(t => { const par = el("p"); par.textContent = t; sum.appendChild(par); });
+  art.appendChild(sum);
+
+  const shots = el("div","shots");
+  const imgs = p.images || [];
+  const lead = el("button","shot lead");
+  lead.type = "button";
+  if(imgs[0]){ lead.appendChild(makeImg(imgs[0], p.name)); lead.dataset.src = "images/" + imgs[0]; }
+  else { lead.appendChild(placeholder("images/" + id + "-1.jpg")); lead.style.cursor = "default"; }
+  shots.appendChild(lead);
+
+  if(imgs.length > 1){
+    const row = el("div","thumbs");
+    imgs.slice(1,4).forEach(f => {
+      const b = el("button","shot"); b.type="button";
+      b.appendChild(makeImg(f, p.name)); b.dataset.src = "images/" + f;
+      row.appendChild(b);
+    });
+    shots.appendChild(row);
+  }
+  art.appendChild(shots);
+
+  if(p.specs && p.specs.length){
+    const dl = el("dl","specs");
+    p.specs.forEach(([k,v]) => {
+      const row = el("div"), dt = el("dt"), dd = el("dd");
+      dt.textContent = k; dd.textContent = v;
+      row.append(dt,dd); dl.appendChild(row);
+    });
+    art.appendChild(dl);
+  }
+  sec.appendChild(art);
+}
+
+// tools
+const tg = document.getElementById("toolgrid");
+TOOLS.forEach(([head,body]) => {
+  const d = el("div"), h = el("h3"), p = el("p");
+  h.textContent = head; p.textContent = body;
+  d.append(h,p); tg.appendChild(d);
+});
+
+// lightbox
+const box = document.getElementById("box"), boxImg = box.querySelector("img");
+document.addEventListener("click", e => {
+  const b = e.target.closest("button.shot");
+  if(b && b.dataset.src){ boxImg.src = b.dataset.src; box.classList.add("open"); return; }
+  if(e.target.closest("#box")) box.classList.remove("open");
+});
+document.addEventListener("keydown", e => { if(e.key === "Escape") box.classList.remove("open"); });
+
+// active nav state
+const links = [...document.querySelectorAll("nav.index a")];
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if(en.isIntersecting) links.forEach(a => a.classList.toggle("on", a.dataset.for === en.target.id));
+  });
+}, { rootMargin: "-15% 0px -70% 0px" });
+document.querySelectorAll("article.project").forEach(a => obs.observe(a));
+</script>
+</body>
+</html>
