@@ -180,30 +180,15 @@ const ME = {
 };
 
 const CATEGORIES = [
-  ["engineering", "Engineering"],
-  ["carpentry",   "Carpentry and building"],
-  ["jewellery",   "Jewellery and metalwork"],
+  ["coursework", "Coursework"],
+  ["construction",   "Construction"],
+  ["random",   "Random / Personal"],
   ["other",       "Other"]
 ];
 
 const PROJECTS = [
   {
-    category: "engineering",
-    name: "Spacecraft vibration & shock qualification",
-    meta: "RAL Space · test intern · 2025",
-    images: [],
-    summary: [
-      "Owned full qualification test cycles on spacecraft hardware, from fixture check to signed-off report, working in a cleanroom environment.",
-      "Rebuilt the accelerometer calibration tracker in Excel/VBA, which surfaced an error in supplier-provided calibration data that had gone unnoticed."
-    ],
-    specs: [
-      ["Test types", "sine, random, shock"],
-      ["Deliverable", "qualification reports"],
-      ["Tools", "Excel/VBA, cleanroom protocol"]
-    ]
-  },
-  {
-    category: "engineering",
+    category: "coursework",
     name: "Crane bot",
     meta: "ENGS076 Machine Engineering · fall 2025",
     images: ["crane-1.jpeg", "crane-2.jpeg", "crane-3.jpeg", "crane-4.jpeg", "crane-5.jpeg", "crane-6.jpeg", "crane-8.jpeg"],
@@ -219,7 +204,7 @@ const PROJECTS = [
     ]
   },
   {
-    category: "engineering",
+    category: "coursework",
     name: "Truss bridge — FEA vs. reality",
     meta: "ENGS033 · structural design & test · 2025",
     images: ["bridge-1.jpeg", "bridge-2.jpeg", "bridge-3.jpeg", "bridge-4.jpeg", "bridge-5.jpeg"],
@@ -234,7 +219,7 @@ const PROJECTS = [
     ]
   },
   {
-    category: "engineering",
+    category: "coursework",
     name: "Modular aerial vehicle",
     meta: "ENGS89/90 capstone · CAD & sponsor liaison · 2026",
     images: [],
@@ -247,7 +232,7 @@ const PROJECTS = [
     ]
   },
   {
-    category: "engineering",
+    category: "coursework",
     name: "High altitude balloon payload",
     meta: "personal / team project",
     images: [],
@@ -261,7 +246,7 @@ const PROJECTS = [
     ]
   },
   {
-    category: "engineering",
+    category: "random",
     name: "Coring bit fabrication",
     meta: "Planetary Ice Research Lab · fabrication",
     images: ["coringbit-1.jpeg", "coringbit-2.jpeg", "coringbit-3.jpeg", "coringbit-4.jpeg"],
@@ -274,10 +259,10 @@ const PROJECTS = [
     ]
   },
   {
-    category: "carpentry",
+    category: "construction",
     name: "Foundations for a cabin, Sitka AK",
     meta: "personal build · 2023",
-    images: ["cabin-1.jpeg", "cabin-2.jpeg", "cabin-3.jpeg", "cabin-4.jpeg", "cabin-5.jpeg",],
+    images: ["cabin-1.jpeg", "cabin-2.jpeg", "cabin-3.jpeg", "cabin-4.jpeg", "cabin-5.jpeg"],
     summary: [
       "In summer 2023 I helped dig the foundations and build the substructure for a friend's cabin on an island near Sitka, AK. We dug foundation holes, drove piles into the topsoil, poured concrete, and installed posts, beams and joists. Over half of the work and fun was getting all the building materials out to the island which had no dock or beach using a Boston Whaler!"
     ],
@@ -286,6 +271,15 @@ const PROJECTS = [
       ["Wall", "44 mm log"],
       ["Modification", "reversed pent roof"]
     ]
+  },
+    {
+    category: "construction",
+    name: "Lavatory with a view, Sitka AK",
+    meta: "personal build · 2023",
+    images: ["longdrop-1", "longdrop-2", "longdrop-3"],
+    summary: [
+      "I built a 'longdrop' loo for the cabin I worked on with my friend near Sitka, AK. The loo offers unparalleled views over Sitka Sound toward Mt Edgecumbe, and features a covered loo roll holder."
+    ],
   },
   {
     category: "jewellery",
