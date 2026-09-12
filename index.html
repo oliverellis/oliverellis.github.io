@@ -205,16 +205,17 @@ const PROJECTS = [
   },
   {
     category: "coursework",
-    name: "Truss bridge — FEA vs. reality",
-    meta: "ENGS033 · structural design & test · 2025",
+    name: "Model Truss Bridge",
+    meta: "ENGS033 · structural design & test · 2024",
     images: ["bridge-1.jpeg", "bridge-2.jpeg", "bridge-3.jpeg", "bridge-4.jpeg", "bridge-5.jpeg"],
     summary: [
-      "Designed and modelled a truss bridge in SolidWorks and SAP2000, then loaded the physical build to failure on an Instron.",
-      "The bridge failed through a mode the FEA hadn't captured, which turned into the more useful half of the project: reconciling where the model's assumptions broke down against what the test actually did."
+      "As part of a Solid Mechanics class I designed and modelled a truss bridge in SolidWorks, FEA tools, and SAP2000, and tested the model to failure using an Instron machine.",
+      "The failure mode ended up being a floor beam tenon shearing at the joint with the side panel, which was different to the prediction of failure at the support point.",
+      "This taught me that analytical models can only get you so far, and stringent physical testing is necessary as part of any design process.   "
     ],
     specs: [
-      ["Modelling", "SolidWorks, SAP2000"],
-      ["Test", "Instron to failure"],
+      ["SolidWorks, SAP2000", "FEA"],
+      ["Test", "Loading to failure"],
       ["Finding", "unmodelled failure mode"]
     ]
   },
