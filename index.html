@@ -105,7 +105,7 @@ section.cat + section.cat{padding-top:48px}
 .shots{display:grid;gap:10px;margin:26px 0 0}
 .shot{background:var(--panel);border:1px solid var(--line);overflow:hidden;position:relative}
 .shot.lead{aspect-ratio:3/2}
-.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .thumbs .shot{aspect-ratio:1/1}
 button.shot{padding:0;cursor:zoom-in;display:block;width:100%;font:inherit;color:inherit}
 .ph{
@@ -434,7 +434,7 @@ function renderProject(p, sec, navOl){
 
   if(imgs.length > 1){
     const row = el("div","thumbs");
-    imgs.slice(1,4).forEach(f => {
+    imgs.slice(1).forEach(f => {
       const b = el("button","shot"); b.type="button";
       b.appendChild(makeImg(f, p.name)); b.dataset.src = "images/" + f;
       row.appendChild(b);
